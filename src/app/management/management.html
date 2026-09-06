@@ -1,0 +1,44 @@
+<main class="management-page">
+  <header class="page-header">
+    <a class="back-link" routerLink="/dashboard">← Dashboard</a>
+    <div class="title-row">
+      <span class="page-icon">{{ icon }}</span>
+      <div>
+        <h1>{{ title }}</h1>
+        <p>{{ description }}</p>
+      </div>
+    </div>
+    <button class="primary-button" type="button">+ Add {{ title.slice(0, -1) }}</button>
+  </header>
+
+  <section class="summary-grid">
+    <article class="summary-card">
+      <span>Total {{ title }}</span>
+      <strong>24</strong>
+    </article>
+    <article class="summary-card">
+      <span>Active this term</span>
+      <strong>20</strong>
+    </article>
+    <article class="summary-card">
+      <span>Needs attention</span>
+      <strong>4</strong>
+    </article>
+  </section>
+
+  <section class="content-panel">
+    <div class="panel-heading">
+      <div>
+        <h2>{{ title }} overview</h2>
+        <p>Use this workspace to manage your school records.</p>
+      </div>
+      <input type="search" placeholder="Search records..." aria-label="Search records" />
+    </div>
+    <div class="empty-state">
+      <div class="empty-icon">{{ icon }}</div>
+      <h2>No {{ title.toLowerCase() }} added yet</h2>
+      <p>Start by adding your first record using the button above.</p>
+      <button class="secondary-button" type="button">Create first record</button>
+    </div>
+  </section>
+</main>

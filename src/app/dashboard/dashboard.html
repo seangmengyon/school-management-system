@@ -1,13 +1,126 @@
-<nav>
-  <a routerLink="/dashboard" routerLinkActive="active"> 🏠 Dashboard </a>
+<div class="dashboard">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">🎓 <span>School SMS</span></div>
 
-  <a routerLink="/students" routerLinkActive="active"> 👨‍🎓 Students </a>
+    <nav>
+      <a routerLink="/dashboard" routerLinkActive="active"> 🏠 Dashboard </a>
 
-  <a>👨‍🏫 Teachers</a>
-  <a>🏫 Classes</a>
-  <a>📚 Subjects</a>
-  <a>📅 Attendance</a>
-  <a>📝 Exams</a>
-  <a>💰 Fees</a>
-  <a>⚙️ Settings</a>
-</nav>
+      <a routerLink="/students" routerLinkActive="active"> 👨‍🎓 Students </a>
+
+      <a routerLink="/teachers" routerLinkActive="active"> 👨‍🏫 Teachers </a>
+
+      <a routerLink="/classes" routerLinkActive="active"> 🏫 Classes </a>
+
+      <a routerLink="/subjects" routerLinkActive="active"> 📚 Subjects </a>
+
+      <a routerLink="/attendance" routerLinkActive="active"> 📅 Attendance </a>
+
+      <a routerLink="/exams" routerLinkActive="active"> 📝 Exams </a>
+
+      <a routerLink="/fees" routerLinkActive="active"> 💰 Fees </a>
+
+      <a routerLink="/settings" routerLinkActive="active"> ⚙️ Settings </a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="topbar">
+      <div>
+        <h1>Dashboard</h1>
+        <p>Welcome to School Management System</p>
+      </div>
+
+      <div class="admin">👤 Admin</div>
+    </div>
+
+    <!-- Cards -->
+    <div class="cards">
+      <div class="card">
+        <div class="icon">👨‍🎓</div>
+        <div>
+          <p>Students</p>
+          <h2>120</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="icon">👨‍🏫</div>
+        <div>
+          <p>Teachers</p>
+          <h2>25</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="icon">🏫</div>
+        <div>
+          <p>Classes</p>
+          <h2>12</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="icon">📚</div>
+        <div>
+          <p>Subjects</p>
+          <h2>30</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Students -->
+    <div class="recent">
+      <div class="section-header">
+        <h2>Recent Students</h2>
+
+        <button routerLink="/students">View Students</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Class</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Dara Sok</td>
+            <td>Male</td>
+            <td>10A</td>
+            <td>
+              <span class="status">Active</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>2</td>
+            <td>Srey Mom</td>
+            <td>Female</td>
+            <td>10B</td>
+            <td>
+              <span class="status">Active</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>3</td>
+            <td>Chan Vuthy</td>
+            <td>Male</td>
+            <td>11A</td>
+            <td>
+              <span class="status">Active</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>

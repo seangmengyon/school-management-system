@@ -10,9 +10,10 @@
 }
 
 /* Sidebar */
-
 .sidebar {
   width: 250px;
+  min-width: 250px;
+  min-height: 100vh;
   background: #172554;
   color: white;
   padding: 20px;
@@ -31,6 +32,7 @@ nav {
 }
 
 nav a {
+  display: block;
   padding: 13px 15px;
   border-radius: 8px;
   color: white;
@@ -44,10 +46,10 @@ nav a.active {
 }
 
 /* Main */
-
 .main-content {
   flex: 1;
   padding: 30px;
+  min-width: 0;
 }
 
 .topbar {
@@ -73,7 +75,6 @@ nav a.active {
 }
 
 /* Cards */
-
 .cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -105,11 +106,11 @@ nav a.active {
 }
 
 /* Table */
-
 .recent {
   background: white;
   padding: 25px;
   border-radius: 12px;
+  overflow-x: auto;
 }
 
 .section-header {
@@ -150,4 +151,63 @@ th {
   padding: 5px 10px;
   border-radius: 15px;
   font-size: 13px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    padding: 15px;
+  }
+
+  .logo {
+    margin-bottom: 15px;
+  }
+
+  nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  nav a {
+    text-align: center;
+    padding: 12px 8px;
+  }
+
+  .main-content {
+    padding: 20px 15px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 }

@@ -13,6 +13,15 @@ export interface Student {
   createdAt: string;
 }
 
+export interface CreateStudent {
+  firstName: string;
+  lastName: string;
+  gender: string;
+  className: string;
+  phone: string;
+  status: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -23,5 +32,13 @@ export class StudentService {
 
   getStudents(): Observable<Student[]> {
     return this.http.get<Student[]>(this.apiUrl);
+  }
+
+  createStudent(student: CreateStudent): Observable<Student> {
+    return this.http.post<Student>(this.apiUrl, student);
+  }
+
+  deleteStudent(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

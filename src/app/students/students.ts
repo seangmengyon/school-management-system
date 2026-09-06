@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { StudentService } from '../services/student.service';
+import { CreateStudent, StudentService } from '../services/student.service';
 
 interface Student {
   id: number;
@@ -75,13 +75,30 @@ export class Students implements OnInit {
       return;
     }
 
-    const newId = this.students.length > 0 ? Math.max(...this.students.map((s) => s.id)) + 1 : 1;
+    const nameParts = this.newStudent.name.trim().split(/\s+/);
+    const studentToCreate: CreateStudent = {
+      firstName: nameParts[0],
+      lastName: nameParts.slice(1).join(' ') || nameParts[0],
+      gender: this.newStudent.gender,
+      className: this.newStudent.class,
+      phone: this.newStudent.phone,
+      status: 'Active',
+    };
 
-    this.students.push({
-      ...this.newStudent,
-      id: newId,
+    this.studentService.createStudent(studentToCreate).subscribe({
+      next: () => {
+        this.resetForm();
+        this.showForm = false;
+        this.loadStudents();
+      },
+      error: (error) => {
+        console.error('Error saving student:', error);
+        alert('Could not save the student to the database.');
+      },
     });
+  }
 
+  private resetForm(): void {
     this.newStudent = {
       id: 0,
       name: '',
@@ -90,11 +107,21 @@ export class Students implements OnInit {
       phone: '',
       status: 'Active',
     };
-
-    this.showForm = false;
   }
 
   deleteStudent(id: number): void {
-    this.students = this.students.filter((student) => student.id !== id);
+    if (!confirm('Delete this student permanently from the database?')) {
+      return;
+    }
+
+    this.studentService.deleteStudent(id).subscribe({
+      next: () => {
+        this.students = this.students.filter((student) => student.id !== id);
+      },
+      error: (error) => {
+        console.error('Error deleting student:', error);
+        alert('Could not delete the student from the database.');
+      },
+    });
   }
 }
